@@ -1,0 +1,42 @@
+{% extends 'partials/base.html' %}
+{% block title %} Purchase Page {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row my-5">
+    
+    <div class="col-md-12">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col">Item ID</th>
+                    <th scope="col">Vendor Name</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total Amount</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.vendor.name }}</td>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.qty }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.total_amt }}</td>
+                    <td>{{ item.pur_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+        <a  class="btn btn-info btn-sm mr-2"
+        href="{% url 'purchasereport-pdf' %}" >Generate PDF report</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

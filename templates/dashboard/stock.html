@@ -1,0 +1,44 @@
+{% extends 'partials/base.html' %}
+{% block title%} Last Transaction Page {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row my-5">
+    
+    <div class="col-md-12">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col">Item Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Purchase Quantity</th>
+                    <th scope="col">Sales Quantity</th>
+                    <th scope="col">Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.product.id }}</td>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.pur_qty }}</td>
+                    <td>{{ item.sale_qty }}</td>
+                    
+                    <td>
+                        <a class="btn btn-info btn-sm mr-2"
+                            href="{% url 'dashboard-stock-edit' item.id %}">Edit</a>
+                        <a class="btn btn-danger btn-sm ml-2"
+                            href="{% url 'dashboard-stock-delete' item.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+        <a  class="btn btn-info btn-sm mr-2"
+        href="{% url 'stock-pdf' %}" >Generate PDF report</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

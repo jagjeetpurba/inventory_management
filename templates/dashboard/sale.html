@@ -1,0 +1,44 @@
+{% extends 'partials/base.html' %}
+{% block title %} Sale Report {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row my-5">
+    
+    <div class="col-md-12">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Customer Mobile</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total Amount</th>
+                    <th scope="col">Staff</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    
+                    <td>{{ item.customer_name }}</td>
+                    <td>{{ item.customer_mob }}</td>
+                    <td>{{ item.qty }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.total_amount }}</td>
+                    <td>{{ item.staff.username }}</td>
+                    <td>{{ item.sales_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+        <a  class="btn btn-info btn-sm mr-2"
+        href="{% url 'salesreport-pdf' %}" >Generate PDF report</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

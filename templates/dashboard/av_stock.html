@@ -1,0 +1,11 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  <h1>Available Stock</h1>
+  {% for product in products %}
+    <div>
+        <h2>{{ product.name }}</h2>
+        <p>Available quantity: {{ product|get_available_quantity }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}

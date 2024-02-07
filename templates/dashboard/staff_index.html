@@ -1,0 +1,14 @@
+{% block title %} Welcome {{ user.username }} {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<center>
+<li class="nav-item active">
+    <a class="text-decoration-none text-dark" href={% url "staff-index-sale"%}>
+        <div class="card my-card shadow text-center p-4">
+            <h4>Sale <i class="fas fa-users"></i></h4>
+</li>
+</center>
+{% endblock %}
+
+
